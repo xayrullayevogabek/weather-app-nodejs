@@ -17,6 +17,15 @@ const saveKeyValue = async (key, value) => {
   await fs.promises.writeFile(filePath, JSON.stringify(data));
 };
 
+const getValueKey = async (key) => {
+  if (await isExist(filePath)) {
+    const file = await fs.promises.readFile(filePath);
+    const data = JSON.parse(file);
+    return data[key];
+  }
+  return null;
+};
+
 const isExist = async (path) => {
   try {
     await fs.promises.stat(path);
@@ -26,4 +35,4 @@ const isExist = async (path) => {
   }
 };
 
-export { saveKeyValue };
+export { saveKeyValue, getValueKey };

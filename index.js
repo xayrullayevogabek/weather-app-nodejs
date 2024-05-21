@@ -1,4 +1,5 @@
 import getArgs from "./helpers/args.js";
+import { getWeather } from "./services/api.service.js";
 import { printError, printHelp, printSuccess } from "./services/log.service.js";
 import { saveKeyValue } from "./services/storage.service.js";
 
@@ -25,6 +26,7 @@ const startCli = () => {
     return saveToken(args.t);
   }
   //   Result
+  getWeather();
 };
 
 startCli();
